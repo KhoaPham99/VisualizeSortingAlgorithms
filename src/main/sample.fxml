@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="983.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Controller">
+   <center>
+      <SplitPane dividerPositions="0.21406727828746178" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="resetBtn" layoutX="46.0" layoutY="510.0" mnemonicParsing="false" onAction="#resetArray" prefHeight="30.0" prefWidth="116.0" text="Reset Array">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ChoiceBox fx:id="choiceBox" layoutX="29.0" layoutY="474.0" prefWidth="150.0" />
+                  <Slider fx:id="numElementSlider" layoutX="22.0" layoutY="414.0" onDragDetected="#setNoOfElements" prefHeight="38.0" prefWidth="165.0" showTickLabels="true" showTickMarks="true">
+                     <padding>
+                        <Insets right="25.0" />
+                     </padding>
+                  </Slider>
+                  <Text fontSmoothingType="LCD" layoutX="41.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed(ms)" textAlignment="CENTER" wrappingWidth="127.806640625">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fontSmoothingType="LCD" layoutX="40.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No. of elements" textAlignment="CENTER" wrappingWidth="127.806640625">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="numElLabel" layoutX="170.0" layoutY="409.0" prefHeight="23.0" prefWidth="37.0" text="0" />
+                  <Button fx:id="sortBtn" layoutX="47.0" layoutY="553.0" mnemonicParsing="false" onAction="#sort" prefHeight="30.0" prefWidth="116.0" text="Sort">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="150.0" fitWidth="175.0" layoutX="29.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@globalICT.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="inputSpeedTxt" layoutX="29.0" layoutY="339.0" onAction="#setSpeed" promptText="Default Speed: 100ms" />
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="rightPane" minHeight="0.0" minWidth="0.0" onMouseReleased="#setNoOfElements" prefHeight="500.0" prefWidth="800.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></AnchorPane>
+        </items>
+      </SplitPane>
+   </center>
+</BorderPane>
