@@ -1,5 +1,6 @@
 package sortingalgorithms;
 
+import UI.Controller;
 import cnode.CNode;
 import javafx.animation.FillTransition;
 import javafx.animation.ParallelTransition;
@@ -28,7 +29,7 @@ public abstract class AbstractSort {
             FillTransition ft = new FillTransition();
             ft.setShape(arr[a[i]]);
             ft.setToValue(color);
-            ft.setDuration(Duration.millis(100));
+            ft.setDuration(Duration.millis(Controller.timeSpd));
             pt.getChildren().add(ft);
         }
         return pt;
@@ -41,7 +42,7 @@ public abstract class AbstractSort {
             FillTransition ft = new FillTransition();
             ft.setShape(c);
             ft.setToValue(color);
-            ft.setDuration(Duration.millis(100));
+            ft.setDuration(Duration.millis(Controller.timeSpd));
             pt.getChildren().add(ft);
         }
 

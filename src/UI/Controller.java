@@ -29,6 +29,7 @@ public class Controller implements Initializable {
     public static final int RPANE_HEIGHT = 500;
     public static final int XGAP = 5;
     public static int NO_OF_CNODES=4;
+    public static int timeSpd;
     private static AbstractSort abstractSort;
     private CNode[] cnodes;
     @FXML
@@ -45,9 +46,13 @@ public class Controller implements Initializable {
     private Label numElLabel;
     @FXML
     private AnchorPane rightPane;
+    @FXML
+    private Slider speedSlider;
+    @FXML
+    private Label speedLabel;
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        CNode.timeSpd=100;
+        timeSpd=1;
         AbstractSort.DX = RPANE_WIDTH / NO_OF_CNODES;
         List<AbstractSort> abstractSortList = new ArrayList<>();
         abstractSortList.add(new BubbleSort());
@@ -83,6 +88,7 @@ public class Controller implements Initializable {
 
     @FXML
     void setNoOfElements(MouseEvent event) {
+        sortBtn.setDisable(true);
         numElementSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
@@ -97,19 +103,22 @@ public class Controller implements Initializable {
     @FXML
     void sort(ActionEvent event) {
         sortBtn.setDisable(true);
-        resetBtn.setDisable(true);
         abstractSort = choiceBox.getSelectionModel().getSelectedItem();
         SequentialTransition sq = new SequentialTransition();
         sq.getChildren().addAll(abstractSort.startSort(cnodes));
-        sq.setOnFinished(e->{
-            resetBtn.setDisable(false);
-        });
         sq.play();
     }
 
     @FXML
     void setSpeed(MouseEvent event) {
-        CNode.timeSpd = Integer.parseInt(inputSpeedTxt.getText());
+        sortBtn.setDisable(true);
+        speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+                speedLabel.setText(String.valueOf(newValue.intValue()));
+                timeSpd = newValue.intValue();
+            }
+        });
     }
 
 }

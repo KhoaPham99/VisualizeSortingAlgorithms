@@ -1,5 +1,6 @@
 package cnode;
 
+import UI.Controller;
 import javafx.animation.TranslateTransition;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -7,7 +8,6 @@ import javafx.util.Duration;
 public class CNode extends Rectangle {
 
     private int value;
-    public static int timeSpd;
     public CNode(int n) {
         this.value = n;
     }
@@ -19,7 +19,7 @@ public class CNode extends Rectangle {
     public TranslateTransition moveX(int x) {
         TranslateTransition t = new TranslateTransition();
         t.setNode(this);
-        t.setDuration(Duration.millis(timeSpd));
+        t.setDuration(Duration.millis(Controller.timeSpd));
         t.setByX(x);
 
         return t;

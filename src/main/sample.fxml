@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,29 +19,29 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="resetBtn" layoutX="46.0" layoutY="510.0" mnemonicParsing="false" onAction="#resetArray" prefHeight="30.0" prefWidth="116.0" text="Reset Array">
+                  <Button fx:id="resetBtn" layoutX="47.0" layoutY="361.0" mnemonicParsing="false" onAction="#resetArray" prefHeight="30.0" prefWidth="116.0" text="Reset Array">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <ChoiceBox fx:id="choiceBox" layoutX="29.0" layoutY="474.0" prefWidth="150.0" />
-                  <Slider fx:id="numElementSlider" layoutX="22.0" layoutY="414.0" onDragDetected="#setNoOfElements" prefHeight="38.0" prefWidth="165.0" showTickLabels="true" showTickMarks="true">
+                  <ChoiceBox fx:id="choiceBox" layoutX="30.0" layoutY="318.0" prefWidth="150.0" />
+                  <Slider fx:id="numElementSlider" layoutX="21.0" layoutY="268.0" onDragDetected="#setNoOfElements" onMouseClicked="#setNoOfElements" prefHeight="38.0" prefWidth="165.0" showTickLabels="true" showTickMarks="true">
                      <padding>
                         <Insets right="25.0" />
                      </padding>
                   </Slider>
-                  <Text fontSmoothingType="LCD" layoutX="41.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed(ms)" textAlignment="CENTER" wrappingWidth="127.806640625">
+                  <Text fontSmoothingType="LCD" layoutX="40.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed(ms)" textAlignment="CENTER" wrappingWidth="127.806640625">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Text fontSmoothingType="LCD" layoutX="40.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No. of elements" textAlignment="CENTER" wrappingWidth="127.806640625">
+                  <Text fontSmoothingType="LCD" layoutX="41.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No. of elements" textAlignment="CENTER" wrappingWidth="127.806640625">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Label fx:id="numElLabel" layoutX="170.0" layoutY="409.0" prefHeight="23.0" prefWidth="37.0" text="0" />
-                  <Button fx:id="sortBtn" layoutX="47.0" layoutY="553.0" mnemonicParsing="false" onAction="#sort" prefHeight="30.0" prefWidth="116.0" text="Sort">
+                  <Label fx:id="numElLabel" layoutX="168.0" layoutY="264.0" prefHeight="23.0" prefWidth="37.0" text="0" />
+                  <Button fx:id="sortBtn" layoutX="46.0" layoutY="415.0" mnemonicParsing="false" onAction="#sort" prefHeight="30.0" prefWidth="116.0" text="Sort">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -52,7 +51,12 @@
                         <Image url="@globalICT.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="inputSpeedTxt" layoutX="29.0" layoutY="339.0" onAction="#setSpeed" promptText="Default Speed: 100ms" />
+                  <Slider fx:id="speedSlider" layoutX="21.0" layoutY="202.0" max="300.0" onDragDetected="#setSpeed" prefHeight="14.0" prefWidth="165.0" showTickLabels="true" showTickMarks="true">
+                     <padding>
+                        <Insets right="25.0" />
+                     </padding>
+                  </Slider>
+                  <Label fx:id="speedLabel" layoutX="168.0" layoutY="198.0" prefHeight="23.0" prefWidth="37.0" text="0" />
                </children>
             </AnchorPane>
           <AnchorPane fx:id="rightPane" minHeight="0.0" minWidth="0.0" onMouseReleased="#setNoOfElements" prefHeight="500.0" prefWidth="800.0">
