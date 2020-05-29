@@ -37,6 +37,10 @@ public class Controller implements Initializable {
     @FXML
     private Button sortBtn;
     @FXML
+    private Button pauseBtn;
+    @FXML
+    private Button resumeBtn;
+    @FXML
     private Button resetBtn;
     @FXML
     private Slider numElementSlider;
@@ -61,6 +65,8 @@ public class Controller implements Initializable {
         choiceBox.setItems(FXCollections.observableArrayList(abstractSortList));
         cnodes = RandomCNodes.randomCNodes(NO_OF_CNODES);
         rightPane.getChildren().addAll(Arrays.asList(cnodes));
+        pauseBtn.setDisable(true);
+        resumeBtn.setDisable(true);
         choiceBox.getSelectionModel().select(0);
         choiceBox.setConverter(new StringConverter<AbstractSort>() {
             @Override
@@ -103,10 +109,31 @@ public class Controller implements Initializable {
     @FXML
     void sort(ActionEvent event) {
         sortBtn.setDisable(true);
+        pauseBtn.setDisable(false);
+        resumeBtn.setDisable(false);
         abstractSort = choiceBox.getSelectionModel().getSelectedItem();
         SequentialTransition sq = new SequentialTransition();
         sq.getChildren().addAll(abstractSort.startSort(cnodes));
         sq.play();
+        pauseBtn.setOnAction(e->{
+            sq.pause();
+        });
+        resumeBtn.setOnAction(e->{
+            sq.play();
+        });
+        sq.setOnFinished(e->{
+            pauseBtn.setDisable(true);
+            resumeBtn.setDisable(true);
+        });
+    }
+
+    private void resetArray() {
+        sortBtn.setDisable(false);
+        pauseBtn.setDisable(true);
+        resumeBtn.setDisable(true);
+        rightPane.getChildren().clear();
+        cnodes=RandomCNodes.randomCNodes(NO_OF_CNODES);
+        rightPane.getChildren().addAll(Arrays.asList(cnodes));
     }
 
     @FXML
