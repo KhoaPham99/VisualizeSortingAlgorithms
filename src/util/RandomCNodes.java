@@ -26,6 +26,15 @@ public class RandomCNodes {
 
     }
 
+    public static CNode createCNode(int n, int i, int l){
+        CNode rect =  new CNode(n);
+        rect.setX(i*(Controller.RPANE_WIDTH/l));
+        rect.setFill(Color.DARKRED);
+        setCNodeDim(rect,l);
+        return rect;
+    }
+
+
     private static void setCNodeDim(CNode cnode, int n) {
         cnode.setWidth(Controller.RPANE_WIDTH / n -
                 Controller.XGAP);

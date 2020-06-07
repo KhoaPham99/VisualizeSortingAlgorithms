@@ -12,10 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
-import sortingalgorithms.AbstractSort;
-import sortingalgorithms.BubbleSort;
-import sortingalgorithms.HeapSort;
-import sortingalgorithms.QuickSort;
+import sortingalgorithms.*;
 import util.RandomCNodes;
 
 import java.net.URL;
@@ -27,13 +24,11 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     public static final int RPANE_WIDTH = 800;
     public static final int RPANE_HEIGHT = 500;
-    public static final int XGAP = 5;
+    public static final int XGAP = 2;
     public static int NO_OF_CNODES=4;
     public static int timeSpd;
     private static AbstractSort abstractSort;
     private CNode[] cnodes;
-    @FXML
-    private TextField inputSpeedTxt;
     @FXML
     private Button sortBtn;
     @FXML
@@ -62,6 +57,7 @@ public class Controller implements Initializable {
         abstractSortList.add(new BubbleSort());
         abstractSortList.add(new QuickSort());
         abstractSortList.add(new HeapSort());
+        abstractSortList.add(new RadixSort());
         choiceBox.setItems(FXCollections.observableArrayList(abstractSortList));
         cnodes = RandomCNodes.randomCNodes(NO_OF_CNODES);
         rightPane.getChildren().addAll(Arrays.asList(cnodes));
@@ -107,10 +103,11 @@ public class Controller implements Initializable {
 
 
     @FXML
-    void sort(ActionEvent event) {
+    void sort(ActionEvent event) throws InterruptedException {
         sortBtn.setDisable(true);
         pauseBtn.setDisable(false);
         resumeBtn.setDisable(false);
+//        resetBtn.setDisable(true);
         abstractSort = choiceBox.getSelectionModel().getSelectedItem();
         SequentialTransition sq = new SequentialTransition();
         sq.getChildren().addAll(abstractSort.startSort(cnodes));
@@ -124,17 +121,12 @@ public class Controller implements Initializable {
         sq.setOnFinished(e->{
             pauseBtn.setDisable(true);
             resumeBtn.setDisable(true);
+            resetBtn.setDisable(false);
+            sq.getChildren().clear();
         });
     }
 
-    private void resetArray() {
-        sortBtn.setDisable(false);
-        pauseBtn.setDisable(true);
-        resumeBtn.setDisable(true);
-        rightPane.getChildren().clear();
-        cnodes=RandomCNodes.randomCNodes(NO_OF_CNODES);
-        rightPane.getChildren().addAll(Arrays.asList(cnodes));
-    }
+
 
     @FXML
     void setSpeed(MouseEvent event) {
@@ -146,6 +138,10 @@ public class Controller implements Initializable {
                 timeSpd = newValue.intValue();
             }
         });
+    }
+
+    public void drawCNode(CNode rect){
+        rightPane.getChildren().add(rect);
     }
 
 }

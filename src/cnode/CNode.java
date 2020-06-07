@@ -21,7 +21,8 @@ public class CNode extends Rectangle {
         t.setNode(this);
         t.setDuration(Duration.millis(Controller.timeSpd));
         t.setByX(x);
-
         return t;
     }
+
+
 }

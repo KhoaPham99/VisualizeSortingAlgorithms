@@ -24,24 +24,20 @@ public class BubbleSort extends AbstractSort {
             transitions.add(swap(arr, a, b));
             swapped = true;
         }
-
         transitions.add(colorCNode(arr, START_COLOR, a, b));
-
         return transitions;
     }
 
     private void bubbleSort(CNode[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            swapped = false;
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                this.transitions.addAll(compareCNode(arr, j, j + 1));
+            for (int i = 0; i < arr.length; i++) {
+                swapped = false;
+                for (int j = 0; j < arr.length - 1 - i; j++) {
+                    this.transitions.addAll(compareCNode(arr, j, j + 1));
+                }
+                if (!swapped) {
+                    break;
+                }
             }
-
-            if (!swapped) {
-                break;
-            }
-        }
-
     }
 
     @Override
@@ -53,6 +49,8 @@ public class BubbleSort extends AbstractSort {
         return this.transitions;
 
     }
+
+
 
 }
 

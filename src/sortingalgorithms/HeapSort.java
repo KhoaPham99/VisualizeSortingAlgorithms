@@ -37,22 +37,22 @@ public class HeapSort extends AbstractSort {
     }
 
     private void heapSort(CNode[] arr) {
-        //build initial max heap
-        transitions.add(colorCNode(selectSubTree(arr, arr.length), SELECT_COLOR));
-        for (int i = arr.length / 2 - 1; i >= 0; i--) {
-            heapify(arr, i, arr.length);
-        }
-        transitions.add(colorCNode(selectSubTree(arr, arr.length), START_COLOR));
+            //build initial max heap
+            transitions.add(colorCNode(selectSubTree(arr, arr.length), SELECT_COLOR));
+            for (int i = arr.length / 2 - 1; i >= 0; i--) {
+                heapify(arr, i, arr.length);
+            }
+            transitions.add(colorCNode(selectSubTree(arr, arr.length), START_COLOR));
 
-        //swap root node with final elt, heapify subarray
-        for (int i = arr.length - 1; i > 0; i--) {
-            transitions.add(colorCNode(arr, ROOT_COLOR, 0));
-            transitions.add(swap(arr, 0, i));
-            transitions.add(colorCNode(arr, START_COLOR, i));
-            transitions.add(colorCNode(selectSubTree(arr, i), SELECT_COLOR));
-            heapify(arr, 0, i);
-            transitions.add(colorCNode(selectSubTree(arr, i), START_COLOR));
-        }
+            //swap root node with final elt, heapify subarray
+            for (int i = arr.length - 1; i > 0; i--) {
+                transitions.add(colorCNode(arr, ROOT_COLOR, 0));
+                transitions.add(swap(arr, 0, i));
+                transitions.add(colorCNode(arr, START_COLOR, i));
+                transitions.add(colorCNode(selectSubTree(arr, i), SELECT_COLOR));
+                heapify(arr, 0, i);
+                transitions.add(colorCNode(selectSubTree(arr, i), START_COLOR));
+            }
     }
 
     private ArrayList<CNode> selectSubTree(CNode[] arr, int n) {
@@ -72,4 +72,6 @@ public class HeapSort extends AbstractSort {
         transitions.add(colorCNode(Arrays.asList(arr), Color.ROYALBLUE));
         return transitions;
     }
+
+
 }

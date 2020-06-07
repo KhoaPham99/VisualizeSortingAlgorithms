@@ -11,6 +11,7 @@ public class QuickSort extends AbstractSort {
 
     private static final Color PIVOT_COLOR = Color.DARKMAGENTA;
     private ArrayList<Transition> transitions;
+    private int flag;
 
     public QuickSort() {
         this.transitions = new ArrayList<>();
@@ -53,6 +54,7 @@ public class QuickSort extends AbstractSort {
 
         return transitions;
     }
+
 }
 
 

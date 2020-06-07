@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class AbstractSort {
 
     final Color START_COLOR = Color.DARKRED;
-    final Color SELECT_COLOR = Color.CYAN;
+    final Color SELECT_COLOR = Color.YELLOWGREEN;
     final Color SORTED_COLOR = Color.ROYALBLUE;
     public static int numCnodes = 4;
     public static int DX;
@@ -37,7 +37,6 @@ public abstract class AbstractSort {
 
     ParallelTransition colorCNode(List<CNode> list, Color color) {
         ParallelTransition pt = new ParallelTransition();
-
         for (CNode c : list) {
             FillTransition ft = new FillTransition();
             ft.setShape(c);
@@ -49,6 +48,7 @@ public abstract class AbstractSort {
         return pt;
     }
 
+
     ParallelTransition swap(CNode[] arr, int i, int j) {
         ParallelTransition pt = new ParallelTransition();
 
@@ -59,9 +59,9 @@ public abstract class AbstractSort {
         CNode tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;
-
         return pt;
     }
+
 
     public abstract ArrayList<Transition> startSort(CNode[] arr);
 }
