@@ -23,7 +23,6 @@ public class RandomCNodes {
             setCNodeDim(arr[i], arr.length);
         }
         return arr;
-
     }
 
     public static CNode createCNode(int n, int i, int l){

@@ -107,11 +107,10 @@ public class Controller implements Initializable {
         sortBtn.setDisable(true);
         pauseBtn.setDisable(false);
         resumeBtn.setDisable(false);
-//        resetBtn.setDisable(true);
+        resetBtn.setDisable(true);
         abstractSort = choiceBox.getSelectionModel().getSelectedItem();
         SequentialTransition sq = new SequentialTransition();
         sq.getChildren().addAll(abstractSort.startSort(cnodes));
-        sq.play();
         pauseBtn.setOnAction(e->{
             sq.pause();
         });
@@ -122,8 +121,8 @@ public class Controller implements Initializable {
             pauseBtn.setDisable(true);
             resumeBtn.setDisable(true);
             resetBtn.setDisable(false);
-            sq.getChildren().clear();
         });
+        sq.play();
     }
 
 
@@ -138,10 +137,6 @@ public class Controller implements Initializable {
                 timeSpd = newValue.intValue();
             }
         });
-    }
-
-    public void drawCNode(CNode rect){
-        rightPane.getChildren().add(rect);
     }
 
 }

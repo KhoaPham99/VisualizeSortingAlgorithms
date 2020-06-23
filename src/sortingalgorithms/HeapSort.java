@@ -16,6 +16,7 @@ public class HeapSort extends AbstractSort {
         this.transitions = new ArrayList<>();
     }
 
+    // function thuc hien viec heapify
     private void heapify(CNode[] arr, int i, int n) {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
